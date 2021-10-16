@@ -1,7 +1,11 @@
 version: 2
 jobs:
   one:
+<<<<<<< HEAD
     docker:
+=======
+    docker
+>>>>>>> e1a5eefe3b0a234c9da67b7b374cda39516797a1
 
     steps:
       - checkout
