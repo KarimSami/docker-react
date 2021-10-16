@@ -2,12 +2,14 @@ version: 2
 jobs:
   one:
     docker:
+      - image: circleci/node
     steps:
       - checkout
       - run: docker build -t karim6b/docker-react -f Dockerfile.dev .
 
   two:
-    docker
+    docker:
+      - image: circleci/node
 
     steps:
       - checkout
