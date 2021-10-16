@@ -2,7 +2,6 @@ version: 2
 jobs:
   one:
     docker:
-
     steps:
       - checkout
       - run: docker build -t karim6b/docker-react -f Dockerfile.dev .
