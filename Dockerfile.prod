@@ -1,0 +1,12 @@
+# BUild Phase
+FROM node:alpine as builder
+WORKDIR '/app'
+COPY package.json . 
+RUN npm i
+COPY ./ ./
+RUN npm run build
+# No need for volumes because this is for production
+
+# Run phase
+FROM nginx as runner
+COPY --from=builder /app/build /usr/share/nginx/html
