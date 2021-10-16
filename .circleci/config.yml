@@ -1,9 +1,22 @@
-sudo: required
-services:
-  - docker
+version: 2
+jobs:
+  one:
+    docker:
 
-before_install:
-  - docker build -t karim6b/docker-react -f Dockerfile.dev .
+    steps:
+      - checkout
+      - run: docker build -t karim6b/docker-react -f Dockerfile.dev .
 
-script:
-  - docker run -e CI=true karim6b/docker-react npm run test
+  two:
+    docker
+
+    steps:
+      - checkout
+      - run: docker run -e CI=true karim6b/docker-react npm run test
+
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
